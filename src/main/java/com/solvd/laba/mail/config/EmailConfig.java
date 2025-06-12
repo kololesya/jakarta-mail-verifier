@@ -1,10 +1,12 @@
-package com.solvd.laba.mail;
+package com.solvd.laba.mail.config;
+
+import com.solvd.laba.mail.constants.MailConstants;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static com.solvd.laba.mail.MailConstants.*;
+import static com.solvd.laba.mail.constants.MailConstants.*;
 
 public class EmailConfig {
 
@@ -16,6 +18,7 @@ public class EmailConfig {
     private final int smtpPort;
     private final boolean smtpAuth;
     private final boolean startTls;
+
     private final String username;
     private final String password;
 
@@ -48,22 +51,6 @@ public class EmailConfig {
 
     public int getImapPort() {
         return imapPort;
-    }
-
-    public String getSmtpHost() {
-        return smtpHost;
-    }
-
-    public int getSmtpPort() {
-        return smtpPort;
-    }
-
-    public boolean isSmtpAuth() {
-        return smtpAuth;
-    }
-
-    public boolean isStartTls() {
-        return startTls;
     }
 
     public String getUsername() {

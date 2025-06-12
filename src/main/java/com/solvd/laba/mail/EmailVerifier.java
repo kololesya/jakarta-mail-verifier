@@ -1,5 +1,7 @@
 package com.solvd.laba.mail;
 
+import com.solvd.laba.mail.config.EmailConfig;
+import com.solvd.laba.mail.constants.MailConstants;
 import jakarta.mail.Folder;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -12,7 +14,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Properties;
 
-import static com.solvd.laba.mail.ProjectConstants.SECONDS_PER_MINUTE;
+import static com.solvd.laba.mail.constants.ProjectConstants.SECONDS_PER_MINUTE;
 
 public class EmailVerifier {
 
