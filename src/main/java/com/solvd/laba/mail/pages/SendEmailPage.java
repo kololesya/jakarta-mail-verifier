@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 import static com.solvd.laba.mail.constants.ProjectConstants.CAPTCHA_WAIT;
 import static com.solvd.laba.mail.constants.ProjectConstants.DEFAULT_WAIT;
 
-public class SendTestEmailPage extends BasePage {
+public class SendEmailPage extends BasePage {
 
     @FindBy(id = "ea2t")
     private WebElement emailField;
@@ -30,7 +30,7 @@ public class SendTestEmailPage extends BasePage {
     @FindBy(css = ".recaptcha-checkbox-border")
     private WebElement captchaCheckbox;
 
-    public SendTestEmailPage(WebDriver driver) {
+    public SendEmailPage(WebDriver driver) {
         super(driver);
     }
 
@@ -40,16 +40,16 @@ public class SendTestEmailPage extends BasePage {
     }
 
     public void sendEmailTo(String address) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_WAIT));
         emailField.clear();
         emailField.sendKeys(address);
         try {
             wait.withTimeout(Duration.ofSeconds(CAPTCHA_WAIT));
             wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(captchaFrame));
             wait.until(ExpectedConditions.elementToBeClickable(captchaCheckbox)).click();
-            driver.switchTo().defaultContent();
+            getDriver().switchTo().defaultContent();
         } catch (NoSuchElementException | org.openqa.selenium.TimeoutException e) {
-            driver.switchTo().defaultContent();
+            getDriver().switchTo().defaultContent();
         } finally {
             wait.withTimeout(Duration.ofSeconds(DEFAULT_WAIT));
         }
@@ -58,7 +58,7 @@ public class SendTestEmailPage extends BasePage {
     }
 
     public String getSuccessMessageFull() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_WAIT));
         wait.until(ExpectedConditions.visibilityOf(successContainer));
         return successContainer.getText().trim();
     }

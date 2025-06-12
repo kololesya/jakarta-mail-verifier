@@ -1,28 +1,30 @@
 package com.solvd.laba.mail;
 
-import com.solvd.laba.mail.pages.SendTestEmailPage;
-import com.solvd.laba.mail.utils.ChromeCapabilitiesProvider;
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
-import static com.solvd.laba.mail.constants.MailConstants.KEY_USERNAME;
+import com.solvd.laba.mail.config.EmailConfig;
+import com.solvd.laba.mail.pages.SendEmailPage;
+import com.solvd.laba.mail.utils.ChromeCapabilitiesProvider;
 import static com.solvd.laba.mail.constants.ProjectConstants.*;
 
-public class SendTestEmailPageTest {
+public class SendEmailPageTest {
 
     @Test
     public void testOpenPage() throws IOException {
+        EmailConfig emailConfig = new EmailConfig();
+        String recipient = emailConfig.getUsername();
         ChromeOptions options = ChromeCapabilitiesProvider.getChromeCapabilities();
         WebDriver driver = new ChromeDriver(options);
         try {
-            SendTestEmailPage page = new SendTestEmailPage(driver);
+            SendEmailPage page = new SendEmailPage(driver);
             page.open();
-            page.sendEmailTo(KEY_USERNAME);
+            page.sendEmailTo(recipient);
             Assert.assertEquals(page.getSuccessMessage(), SUCCESS_MESSAGE,
                     "The opened URL should match the configured testdata URL");
             String emailId = page.extractEmailId();
