@@ -18,36 +18,40 @@ import jakarta.mail.search.SubjectTerm;
 import com.solvd.laba.mail.config.EmailConfig;
 import com.solvd.laba.mail.constants.MailConstants;
 import com.solvd.laba.mail.constants.ProjectConstants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static com.solvd.laba.mail.constants.ProjectConstants.SECONDS_PER_MINUTE;
 
 public class EmailVerifier {
 
+    private static final Logger LOGGER = LogManager.getLogger(EmailVerifier.class);
     private final EmailConfig config;
-    private final Duration searchWindow;
     private final Duration pollInterval;
 
     public EmailVerifier() throws IOException {
         this.config = new EmailConfig();
-        this.searchWindow = Duration.ofMinutes(
-                ProjectConstants.EMAIL_SEARCH_WINDOW_MINUTES
-        );
-        this.pollInterval = Duration.ofSeconds(10);
+        this.pollInterval = Duration.ofSeconds(ProjectConstants.POLL_INTERVAL_SECONDS);
     }
 
     public boolean isEmailReceived(String subject, int windowMinutes) {
         Instant deadline = Instant.now().plusSeconds(windowMinutes * SECONDS_PER_MINUTE);
+        LOGGER.info("Start polling for email with subject '{}' until {}", subject, deadline);
         while (Instant.now().isBefore(deadline)) {
+            LOGGER.debug("Checking inbox for subject '{}' at {}", subject, Instant.now());
             if (checkOnce(subject, windowMinutes)) {
+                LOGGER.info("Email with subject '{}' found", subject);
                 return true;
             }
             try {
                 Thread.sleep(pollInterval.toMillis());
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                LOGGER.warn("Polling interrupted", e);
                 break;
             }
         }
+        LOGGER.warn("Deadline reached. Email with subject '{}' not found", subject);
         return false;
     }
 
@@ -70,6 +74,7 @@ public class EmailVerifier {
                 return found != null && found.length > 0;
             }
         } catch (MessagingException e) {
+            LOGGER.error("Error during email lookup", e);
             return false;
         }
     }

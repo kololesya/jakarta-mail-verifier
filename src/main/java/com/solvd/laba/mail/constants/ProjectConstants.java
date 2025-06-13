@@ -7,7 +7,7 @@ public class ProjectConstants {
     private ProjectConstants() {
     }
 
-    public static final long EMAIL_DELIVERY_TIMEOUT_MS = 30_000L;
+    public static final long POLL_INTERVAL_SECONDS = 10;
 
     public static final int EMAIL_SEARCH_WINDOW_MINUTES = 5;
 
