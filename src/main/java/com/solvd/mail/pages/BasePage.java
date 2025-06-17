@@ -1,4 +1,4 @@
-package com.solvd.laba.mail.pages;
+package com.solvd.mail.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

@@ -1,4 +1,4 @@
-package com.solvd.laba.mail.constants;
+package com.solvd.mail.constants;
 
 import java.time.Duration;
 

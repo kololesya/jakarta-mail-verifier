@@ -1,4 +1,4 @@
-package com.solvd.laba.mail;
+package com.solvd.mail;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.solvd.laba.mail.config.EmailConfig;
-import com.solvd.laba.mail.pages.SendEmailPage;
-import com.solvd.laba.mail.utils.ChromeCapabilitiesProvider;
-import static com.solvd.laba.mail.constants.ProjectConstants.*;
+import com.solvd.mail.config.EmailConfig;
+import com.solvd.mail.pages.SendEmailPage;
+import com.solvd.mail.utils.ChromeCapabilitiesProvider;
+import static com.solvd.mail.constants.ProjectConstants.*;
 
 public class SendEmailPageTest {
 

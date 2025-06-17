@@ -1,6 +1,6 @@
-package com.solvd.laba.mail.pages;
+package com.solvd.mail.pages;
 
-import com.solvd.laba.mail.config.TestDataConfig;
+import com.solvd.mail.config.TestDataConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.solvd.laba.mail.constants.ProjectConstants.CAPTCHA_WAIT;
-import static com.solvd.laba.mail.constants.ProjectConstants.DEFAULT_WAIT;
+import static com.solvd.mail.constants.ProjectConstants.CAPTCHA_WAIT;
+import static com.solvd.mail.constants.ProjectConstants.DEFAULT_WAIT;
 
 public class SendEmailPage extends BasePage {
 

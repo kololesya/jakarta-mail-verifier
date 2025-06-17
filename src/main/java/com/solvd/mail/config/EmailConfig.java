@@ -1,11 +1,11 @@
-package com.solvd.laba.mail.config;
+package com.solvd.mail.config;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.solvd.laba.mail.constants.MailConstants;
-import static com.solvd.laba.mail.constants.MailConstants.*;
+import com.solvd.mail.constants.MailConstants;
+import static com.solvd.mail.constants.MailConstants.*;
 
 public class EmailConfig {
 

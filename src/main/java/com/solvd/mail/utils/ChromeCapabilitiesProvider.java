@@ -1,4 +1,4 @@
-package com.solvd.laba.mail.utils;
+package com.solvd.mail.utils;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 

@@ -1,4 +1,4 @@
-package com.solvd.laba.mail.config;
+package com.solvd.mail.config;
 
 import java.io.IOException;
 import java.io.InputStream;

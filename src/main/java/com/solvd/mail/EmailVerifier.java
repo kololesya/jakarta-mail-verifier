@@ -1,4 +1,4 @@
-package com.solvd.laba.mail;
+package com.solvd.mail;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -15,13 +15,13 @@ import jakarta.mail.search.ReceivedDateTerm;
 import jakarta.mail.search.SearchTerm;
 import jakarta.mail.search.SubjectTerm;
 
-import com.solvd.laba.mail.config.EmailConfig;
-import com.solvd.laba.mail.constants.MailConstants;
-import com.solvd.laba.mail.constants.ProjectConstants;
+import com.solvd.mail.config.EmailConfig;
+import com.solvd.mail.constants.MailConstants;
+import com.solvd.mail.constants.ProjectConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.solvd.laba.mail.constants.ProjectConstants.SECONDS_PER_MINUTE;
+import static com.solvd.mail.constants.ProjectConstants.SECONDS_PER_MINUTE;
 
 public class EmailVerifier {
 
