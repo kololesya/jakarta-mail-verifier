@@ -39,7 +39,7 @@ public class EmailVerifier {
         LOGGER.info("Start polling for email with subject '{}' until {}", subject, deadline);
         while (Instant.now().isBefore(deadline)) {
             LOGGER.debug("Checking inbox for subject '{}' at {}", subject, Instant.now());
-            if (checkOnce(subject, windowMinutes)) {
+            if (isEmailFound(subject, windowMinutes)) {
                 LOGGER.info("Email with subject '{}' found", subject);
                 return true;
             }
@@ -55,7 +55,7 @@ public class EmailVerifier {
         return false;
     }
 
-    private boolean checkOnce(String subject, int minutes) {
+    private boolean isEmailFound(String subject, int minutes) {
         Properties props = new Properties();
         props.put(MailConstants.STORE_PROTOCOL, config.getProtocol());
         props.put("mail." + config.getProtocol() + ".host", config.getImapHost());
