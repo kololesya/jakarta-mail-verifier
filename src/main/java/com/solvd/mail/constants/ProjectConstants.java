@@ -1,7 +1,5 @@
 package com.solvd.mail.constants;
 
-import java.time.Duration;
-
 public class ProjectConstants {
 
     private ProjectConstants() {
