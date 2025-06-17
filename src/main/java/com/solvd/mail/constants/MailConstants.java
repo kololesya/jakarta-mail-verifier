@@ -16,7 +16,5 @@ public final class MailConstants {
     public static final String KEY_USERNAME = "mail.username";
     public static final String KEY_PASSWORD = "mail.password";
 
-    public static final String STORE_PROTOCOL = "mail.store.protocol";
-    public static final String SSL_ENABLE_FMT = "mail.%s.ssl.enable";
     public static final String FOLDER_INBOX = "INBOX";
 }
